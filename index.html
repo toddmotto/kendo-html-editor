@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Kendo UI</title>
+    <link rel="stylesheet" href="css/kendo.common-material.min.css">
+    <link rel="stylesheet" href="css/kendo.material.min.css">
+    <link rel="stylesheet" href="css/app.css">
+  </head>
+  <body>
+
+    <header class="header">
+      <div class="wrapper">
+        <h1>
+          Todd's blog
+        </h1>
+      </div>
+    </header>
+    <div class="wrapper">
+      <div class="post">
+        <h2>
+          Some new features for Kendo UI!
+        </h2>
+        <div class="post__content">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat eum ex odit dignissimos cupiditate suscipit labore inventore distinctio libero ratione. Possimus blanditiis, dicta. At voluptate quas perspiciatis sit mollitia incidunt.
+          </p>
+          <p>
+            Dicta, ut, eum molestiae perferendis quasi, sunt non fuga, dolor libero sit aut! Quisquam laudantium laborum, perferendis nisi ab tenetur! Nobis fugiat tenetur veniam, qui blanditiis debitis vel accusamus maxime.
+          </p>
+          <p>
+            Autem delectus incidunt pariatur asperiores, dolores aperiam quis quaerat, ratione modi nisi impedit repellat blanditiis dicta odit quisquam possimus. Voluptatibus officia, unde esse harum. Sapiente eveniet expedita nihil, numquam porro.
+          </p>
+          <p>
+            Nihil ex quam accusamus debitis et similique earum cum labore repudiandae tenetur cupiditate, voluptates voluptatum fugiat expedita aliquam non in sapiente officia ab, quo molestias quod. Maiores aspernatur, eligendi distinctio!
+          </p>
+          <p>
+            Voluptatem, odio libero maxime accusantium quidem. Quisquam doloremque nemo odit eveniet delectus vel necessitatibus ad sed! Magnam repellat saepe veniam animi provident aliquid perferendis laborum, eos consectetur voluptate consequuntur molestiae.
+          </p>
+          <p>
+            Optio quae, aliquam perspiciatis suscipit cumque, fuga perferendis ad distinctio, nobis soluta doloremque amet nostrum, nam fugiat omnis voluptates beatae! Suscipit molestiae possimus ut nesciunt, explicabo nostrum ex optio magni.
+          </p>
+          <p>
+            Illum cum neque totam. Expedita doloribus tempora illum ipsa totam sapiente eum recusandae placeat sed autem. Rerum harum at exercitationem qui perferendis totam veniam, sed illum soluta, eius possimus ipsum?
+          </p>
+          <p>
+            Earum ratione, officia, quaerat facilis maxime eligendi distinctio recusandae. Minima itaque distinctio amet quod, accusamus voluptas veniam, saepe illo architecto ipsum culpa nam? Debitis iusto aut rem soluta quos voluptates!
+          </p>
+          <p>
+            Perspiciatis dolore rerum quibusdam sed numquam, ab dolor harum, ducimus laborum nihil ullam vero nostrum animi reiciendis beatae facere veritatis consectetur quasi aperiam eos minus unde tempore. Optio, velit, nihil?
+          </p>
+          <p>
+            Hic quibusdam, id omnis? Sunt a ratione deserunt nulla natus architecto quos, aliquam id, est nobis ipsa quam. Adipisci repellendus, non. Laborum ipsam omnis distinctio vero consequuntur amet, dolorem sed.
+          </p>
+          <div class="post__further">
+            <h3>
+              Further reading
+            </h3>
+            <ul>
+              <li>
+                <a href="http://www.telerik.com/blogs/what-to-expect-in-2016-for-kendo-ui-with-angular-2-and-more">
+                  What to expect from Kendo UI in 2016 for Angular 2
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/telerik/kendo-angular2">
+                  GitHub: Angular 2 component suite roadmap
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <form class="post__comment">
+          <h4>
+            Leave your comment
+          </h4>
+          <div>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div>
+            <input type="text" placeholder="Email address">
+          </div>
+          <div>
+            <textarea id="editor"></textarea>
+          </div>
+          <button>
+            Submit comment
+          </button>
+        </form>
+      </div>
+    </div>
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="js/markdown.min.js"></script>
+    <script src="js/md.min.js"></script>
+    <script>
+    ((kendo) => {
+
+      const editor = $('#editor');
+      const config = {
+        resizable: {
+          content: true,
+          toolbar: true
+        },
+        pasteCleanup: {
+          all: false,
+          css: false,
+          keepNewLines: false, // prevent formatting on `paste`
+          msAllFormatting: false,
+          msConvertLists: false,
+          msTags: false,
+          none: false,
+          span: false
+        },
+        deserialization: {
+          custom(html) {
+            return markdown.toHTML(html, "Maruku");
+          }
+        },
+        serialization: {
+          custom(html) {
+            return md(html);
+          }
+        },
+        tools: [
+            "bold",
+            "italic",
+            "insertUnorderedList",
+            "insertOrderedList",
+            "createLink",
+            "unlink",
+            "viewHtml"
+        ],
+        messages: {
+            viewHtml: "View Source"
+        }
+      };
+      editor.kendoEditor(config);
+
+    })(window.kendo);
+    </script>
+  </body>
+</html>
