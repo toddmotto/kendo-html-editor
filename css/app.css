@@ -63,6 +63,9 @@ body {
   display: none;
 }
 .post__comment button {
+  cursor: pointer;
+  outline: 0;
+  font-size: 16px;
   background: #8e44ad;
   color: #fff;
   padding: 15px 25px;

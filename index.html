@@ -58,6 +58,11 @@
             </h3>
             <ul>
               <li>
+                <a href="http://demos.telerik.com/kendo-ui/editor/index">
+                  HTML Editor Documentation
+                </a>
+              </li>
+              <li>
                 <a href="http://www.telerik.com/blogs/what-to-expect-in-2016-for-kendo-ui-with-angular-2-and-more">
                   What to expect from Kendo UI in 2016 for Angular 2
                 </a>
@@ -65,6 +70,16 @@
               <li>
                 <a href="https://github.com/telerik/kendo-angular2">
                   GitHub: Angular 2 component suite roadmap
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/telerik/kendo-angular-component-base">
+                  Angular 2 Kendo Component Base
+                </a>
+              </li>
+              <li>
+                <a href="https://www.npmjs.com/search?q=%40telerik">
+                  Telerik on npm
                 </a>
               </li>
             </ul>
@@ -83,21 +98,19 @@
           <div>
             <textarea id="editor"></textarea>
           </div>
-          <button>
+          <button type="button">
             Submit comment
           </button>
         </form>
       </div>
     </div>
 
-
     <script src="js/jquery.min.js"></script>
     <script src="js/kendo.all.min.js"></script>
     <script src="js/markdown.min.js"></script>
     <script src="js/md.min.js"></script>
     <script>
-    ((kendo) => {
-
+    {
       const editor = $('#editor');
       const config = {
         resizable: {
@@ -116,30 +129,33 @@
         },
         deserialization: {
           custom(html) {
-            return markdown.toHTML(html, "Maruku");
+            let converted = markdown.toHTML(html, 'Maruku');
+            // console.log('deserialization', html, converted);
+            return converted;
           }
         },
         serialization: {
           custom(html) {
-            return md(html);
+            let converted = md(html);
+            // console.log('serialization', html, converted);
+            return converted;
           }
         },
         tools: [
-            "bold",
-            "italic",
-            "insertUnorderedList",
-            "insertOrderedList",
-            "createLink",
-            "unlink",
-            "viewHtml"
+          'bold',
+          'italic',
+          'insertUnorderedList',
+          'insertOrderedList',
+          'createLink',
+          'unlink',
+          'viewHtml'
         ],
         messages: {
-            viewHtml: "View Source"
+          viewHtml: 'View Source'
         }
       };
       editor.kendoEditor(config);
-
-    })(window.kendo);
+    }
     </script>
   </body>
 </html>
